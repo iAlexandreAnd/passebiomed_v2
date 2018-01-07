@@ -31,7 +31,7 @@ public class LoginControler {
     
     
     @FXML
-    private void handleConnect()
+    private int handleConnect()
     {
     	
     	int verificationLogin = ConnectDataBase(loginField.getText(),passwordField.getText());
@@ -43,7 +43,7 @@ public class LoginControler {
     		alert.setHeaderText("Connexion OK");
     		alert.setContentText("Connexion OK");
     		
-    		alert.showAndWait();
+    		return 1;
     	}
     	else
     	{
@@ -55,6 +55,7 @@ public class LoginControler {
     		alert.showAndWait();
     	}
     	
+    	return 0;
     }
     
     
@@ -90,7 +91,6 @@ public class LoginControler {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		return verificationLogin;
 	}
 }
