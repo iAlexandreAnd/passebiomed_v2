@@ -17,10 +17,14 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
-import passbiomed.libraries.Connect;
 
 public class LoginControler {
 
+	private int data;
+	
+	
+	@FXML
+	private javafx.scene.control.Button connectButton;
 	@FXML
     private TextField loginField;
     @FXML
@@ -29,9 +33,13 @@ public class LoginControler {
     static PreparedStatement preparedStatement = null;
     
     
-    private void LoginController() {
+    private void LoginControler() {
+    	
     }
     
+    int getData() {
+    	return data;
+    }
     
     @FXML
     private void handleConnect()
@@ -46,6 +54,10 @@ public class LoginControler {
     		alert.setHeaderText("Connexion OK");
     		alert.setContentText("Connexion OK");
     		
+    		data = 1;
+    		
+    		Stage stage = (Stage) connectButton.getScene().getWindow();
+    		stage.close();
     		
     		newMainWindow();
     		
@@ -58,6 +70,7 @@ public class LoginControler {
     		alert.setContentText("Erreur");
     		
     		alert.showAndWait();
+    		
     	}
     	
     }
@@ -87,6 +100,7 @@ public class LoginControler {
 			{
 				verificationLogin=1;
 				System.out.println("Verification : Succes");
+				
 			}
 			else
 			{
@@ -99,11 +113,11 @@ public class LoginControler {
 	}
     
     private void newMainWindow() {
-    	Parent root;
     	try {
-    		root = FXMLLoader.load(getClass().getClassLoader().getResource("PatientOverview.fxml"));
+    		FXMLLoader fxmlLoader = new FXMLLoader();
+    		fxmlLoader.setLocation(getClass().getResource("PatientOverview.fxml"));
     		
-    		Scene scene = new Scene(root,800, 600);
+    		Scene scene = new Scene(fxmlLoader.load(),800, 600);
     		Stage stage = new Stage();
     		
     		stage.setTitle("Patient Overview");
@@ -114,7 +128,6 @@ public class LoginControler {
     	}catch (Exception e) {
 			e.printStackTrace();
 		}
-    	
     }
 }
 
