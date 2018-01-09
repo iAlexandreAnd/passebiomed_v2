@@ -31,6 +31,8 @@ public class MainApp extends Application {
         this.primaryStage.setTitle("PassBioMed");
 
         showLogin();
+        
+        
     }
 	
 	public void showLogin() {
@@ -52,6 +54,7 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
     }
+	
 
 	public Stage getPrimaryStage() {
         return primaryStage;

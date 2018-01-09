@@ -9,6 +9,10 @@ import com.mysql.jdbc.ResultSetMetaData;
 import com.mysql.jdbc.Statement;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
@@ -24,14 +28,13 @@ public class LoginControler {
     
     static PreparedStatement preparedStatement = null;
     
-    private Stage dialogStage;
     
     private void LoginController() {
     }
     
     
     @FXML
-    private int handleConnect()
+    private void handleConnect()
     {
     	
     	int verificationLogin = ConnectDataBase(loginField.getText(),passwordField.getText());
@@ -43,7 +46,9 @@ public class LoginControler {
     		alert.setHeaderText("Connexion OK");
     		alert.setContentText("Connexion OK");
     		
-    		return 1;
+    		
+    		newMainWindow();
+    		
     	}
     	else
     	{
@@ -55,7 +60,6 @@ public class LoginControler {
     		alert.showAndWait();
     	}
     	
-    	return 0;
     }
     
     
@@ -93,4 +97,25 @@ public class LoginControler {
 		}
 		return verificationLogin;
 	}
+    
+    private void newMainWindow() {
+    	Parent root;
+    	try {
+    		root = FXMLLoader.load(getClass().getClassLoader().getResource("PatientOverview.fxml"));
+    		
+    		Scene scene = new Scene(root,800, 600);
+    		Stage stage = new Stage();
+    		
+    		stage.setTitle("Patient Overview");
+    		stage.setScene(scene);
+    		stage.show();
+    		
+    		
+    	}catch (Exception e) {
+			e.printStackTrace();
+		}
+    	
+    }
 }
+
+
