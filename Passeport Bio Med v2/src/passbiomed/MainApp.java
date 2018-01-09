@@ -37,7 +37,6 @@ public class MainApp extends Application {
 	
 	public void showLogin() {
         try {
-            // Load person overview.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/Login.fxml"));
             AnchorPane login = (AnchorPane) loader.load();
