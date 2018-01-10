@@ -83,7 +83,7 @@ public class LoginControler {
 			Class.forName("com.mysql.jdbc.Driver");
 			System.out.println("Driver OK");
 			
-			String url = "jdbc:mysql://localhost:3306/med_file_new_v1";
+			String url = "jdbc:mysql://localhost:3306/passbiomed";
 			String user = "root";
 			String password = "Wxcvbn123*";
 			
