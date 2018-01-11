@@ -56,7 +56,7 @@ public class PatientConnectController {
     			
     			String url = "jdbc:mysql://localhost:3306/passbiomed";
     			String user = "root";
-    			String password = "Wxcvbn123*";
+    			String password = "Secret123";
     			
     			Connection connect = (Connection) DriverManager.getConnection(url, user, password);
     			ResultSet resultSet = null;
