@@ -9,6 +9,7 @@ import java.io.IOException;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -53,37 +54,6 @@ public class MainApp extends Application {
     }
 	
 	
-	public boolean showPatientConnect() {
-		System.out.println("Patient Connect debut");
-		try {
-			
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("view/PatientConnect.fxml"));
-			AnchorPane page = (AnchorPane) loader.load();
-
-			// Create the dialog Stage.
-			Stage dialogStage = new Stage();
-			dialogStage.setTitle("Find Patient");
-			dialogStage.initModality(Modality.WINDOW_MODAL);
-			dialogStage.initOwner(primaryStage);
-			Scene scene = new Scene(page);
-			dialogStage.setScene(scene);
-			
-			System.out.println("Patient Connect mid");
-			
-			// Set the person into the controller.
-			PatientConnectController controller = loader.getController();
-			controller.setDialogStage(dialogStage);
-
-			// Show the dialog and wait until the user closes it
-			dialogStage.showAndWait();
-			
-			return controller.isOkClicked();
-    	} catch (IOException e) {
-        	e.printStackTrace();
-        	return false;
-    	}
-	}
 
 	
 	

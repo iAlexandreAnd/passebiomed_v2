@@ -2,10 +2,17 @@ package passbiomed.view;
 
 
 
+import java.io.IOException;
+
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import passbiomed.MainApp;
 import passbiomed.model.Medicament;
 import passbiomed.model.Trouble;
@@ -73,10 +80,40 @@ public class PatientOverviewController {
     }
     
     
+    public boolean showPatientConnect() {
+		try {
+			
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("view/PatientConnect.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+
+			// Creation du dialogue.
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Find Patient");
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+			dialogStage.setResizable(false);
+			
+			
+			// Attribution du controller.
+			PatientConnectController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+
+			
+			dialogStage.showAndWait();
+			
+			return controller.isOkClicked();
+    	} catch (IOException e) {
+        	e.printStackTrace();
+        	return false;
+    	}
+	}
+    
+    
     @FXML
     private void ouvrirPatient() {
     	System.out.println("Patient Connect show");
-    	boolean okClicked = mainApp.showPatientConnect();
+    	boolean okClicked = showPatientConnect();
     	if (okClicked) {
             System.out.println("Patient Connect close");
         }
