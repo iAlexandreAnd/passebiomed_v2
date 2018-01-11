@@ -14,6 +14,7 @@ public class Patient {
 	private String pays;
 	private String iCE_nom;
 	private String iCE_telephone;
+	private String dateNaissance;
 	private int flagValidite;
 	private int idPassBioMed;
 	private int idLogin;
@@ -110,6 +111,12 @@ public class Patient {
 	}
 	public void setiCE_telephone(String iCE_telephone) {
 		this.iCE_telephone = iCE_telephone;
+	}
+	public String getDateNaissance() {
+		return dateNaissance;
+	}
+	public void setDateNaissance(String dateNaissance) {
+		this.dateNaissance = dateNaissance;
 	}
 
 }
