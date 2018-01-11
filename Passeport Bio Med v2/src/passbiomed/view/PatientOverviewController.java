@@ -1,10 +1,12 @@
 package passbiomed.view;
 
 
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import passbiomed.MainApp;
 import passbiomed.model.Medicament;
 import passbiomed.model.Trouble;
 
@@ -22,7 +24,7 @@ public class PatientOverviewController {
     @FXML
     private TableColumn<Trouble, String> dateDebutColonne;
     @FXML
-    private TableColumn<Trouble, String> dateFInColonne;
+    private TableColumn<Trouble, String> dateFinColonne;
     
     @FXML
     private TableView<Medicament> medicamentTable;
@@ -50,6 +52,35 @@ public class PatientOverviewController {
     private Label phoneLabel;
     @FXML
     private Label birthdayLabel;
+    @FXML
+    private Label paysLabel;
+    @FXML
+    private Label sexeLabel;
+    @FXML
+    private Label iceNomLabel;
+    @FXML
+    private Label iceTelephoneLabel;
+    
+    private MainApp mainApp;
+    
+    public PatientOverviewController() {
+    	
+    }
+    
+    private void initialize() {
+    	// Initialize the person table with the two tables.
+    	
+    }
+    
+    
+    @FXML
+    private void ouvrirPatient() {
+    	System.out.println("Patient Connect show");
+    	boolean okClicked = mainApp.showPatientConnect();
+    	if (okClicked) {
+            System.out.println("Patient Connect close");
+        }
+    }
     
     
     

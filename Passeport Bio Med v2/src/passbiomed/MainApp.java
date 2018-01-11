@@ -2,6 +2,7 @@ package passbiomed;
 
 
 import passbiomed.MainApp;
+import passbiomed.view.PatientConnectController;
 
 import java.io.IOException;
 
@@ -51,7 +52,41 @@ public class MainApp extends Application {
         }
     }
 	
+	
+	public boolean showPatientConnect() {
+		System.out.println("Patient Connect debut");
+		try {
+			
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("view/PatientConnect.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
 
+			// Create the dialog Stage.
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Find Patient");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+			
+			System.out.println("Patient Connect mid");
+			
+			// Set the person into the controller.
+			PatientConnectController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+
+			// Show the dialog and wait until the user closes it
+			dialogStage.showAndWait();
+			
+			return controller.isOkClicked();
+    	} catch (IOException e) {
+        	e.printStackTrace();
+        	return false;
+    	}
+	}
+
+	
+	
 	public Stage getPrimaryStage() {
         return primaryStage;
     }
