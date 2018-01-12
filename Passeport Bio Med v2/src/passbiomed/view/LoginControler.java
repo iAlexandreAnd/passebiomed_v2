@@ -3,6 +3,7 @@ package passbiomed.view;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 
+import com.jfoenix.controls.JFXTextField;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
@@ -14,26 +15,46 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
-public class LoginControler {
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
+import javafx.fxml.FXML;
+
+public class LoginControler 
+{
 
 	private int data;
 	
-	
-	@FXML
-	private javafx.scene.control.Button connectButton;
-	@FXML
-    private TextField loginField;
-    @FXML
-    private TextField passwordField;
+//	
+//	@FXML
+//	private javafx.scene.control.Button connectButton;
+//	@FXML
+//    private TextField loginField;
+//    @FXML
+//    private TextField passwordField;
+ 
+		@FXML
+	    private JFXTextField loginField;
+
+	    @FXML
+	    private JFXPasswordField passwordField;
+
+	    @FXML
+	    private JFXButton connectButton;
+
     
     static PreparedStatement preparedStatement = null;
     
     
-    private void LoginControler() {
+    private void LoginControler() 
+    {
+    
+
     	
     }
     
-    int getData() {
+    int getData() 
+    {
     	return data;
     }
     
