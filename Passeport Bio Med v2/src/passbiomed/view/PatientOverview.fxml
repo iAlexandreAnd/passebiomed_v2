@@ -42,14 +42,14 @@
                   <Label text="Ville" GridPane.rowIndex="5" />
                   <Label text="Téléphone" GridPane.rowIndex="6" />
                   <Label text="Date de naissance" GridPane.rowIndex="7" />
-                  <Label text="Label" GridPane.columnIndex="1" />
-                  <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                  <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <Label fx:id="nomLabel" text="Label" GridPane.columnIndex="1" />
+                  <Label fx:id="prenomLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="grpSanLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label fx:id="adresseLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label fx:id="codePosLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Label fx:id="villeLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Label fx:id="phoneLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <Label fx:id="birthdayLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                </children>
             </GridPane>
             <GridPane layoutX="225.0" layoutY="18.0">
@@ -68,10 +68,10 @@
                   <Label text="Sexe" GridPane.rowIndex="1" />
                   <Label text="Ice Nom" GridPane.rowIndex="2" />
                   <Label text="Ice Telephone" GridPane.rowIndex="3" />
-                  <Label text="Label" GridPane.columnIndex="1" />
-                  <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label fx:id="paysLabel" text="Label" GridPane.columnIndex="1" />
+                  <Label fx:id="sexeLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="iceNomLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label fx:id="iceTelephoneLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                </children>
             </GridPane>
          </children>
@@ -129,7 +129,7 @@
       </TabPane>
       <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="256.0" prefWidth="336.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
          <children>
-            <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#ouvrirPatient" prefHeight="69.0" prefWidth="106.0" text="Ouvrir Patient" textAlignment="CENTER" />
+            <Button layoutX="22.0" layoutY="14.0" mnemonicParsing="false" onAction="#ouvrirPatient" prefHeight="91.0" prefWidth="120.0" text="Ouvrir Patient" />
          </children>
       </AnchorPane>
    </children>
