@@ -23,6 +23,7 @@ public class PatientConnectController {
     private String patientID; //va récuperer l'id du patient rechercher
     
     private Stage dialogStage;
+    
     private boolean okClicked = false;
     
     static PreparedStatement preparedStatement = null;
@@ -33,6 +34,10 @@ public class PatientConnectController {
     
     public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
+    }
+    
+    public String getPatientID() {
+    	return patientID;
     }
     
     public boolean isOkClicked() {
@@ -70,6 +75,8 @@ public class PatientConnectController {
     			if(resultSet.next())
     			{
     				System.out.println("Patient trouvé");
+    				patientID=resultSet.getString(1);
+    				System.out.println(patientID.toString());
     			}
     			else
     			{
