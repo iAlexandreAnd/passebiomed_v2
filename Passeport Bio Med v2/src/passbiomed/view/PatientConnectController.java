@@ -20,7 +20,7 @@ public class PatientConnectController {
     @FXML
     private TextField prenomField;
     
-    private String patientID; //va récuperer l'id du patient rechercher
+    private String patientID; //va rÃ©cuperer l'id du patient rechercher
     
     private Stage dialogStage;
     private boolean okClicked = false;
@@ -69,11 +69,11 @@ public class PatientConnectController {
     			
     			if(resultSet.next())
     			{
-    				System.out.println("Patient trouvé");
+    				System.out.println("Patient trouvï¿½");
     			}
     			else
     			{
-    				System.out.println("Patient non-trouvé");
+    				System.out.println("Patient non-trouvï¿½");
     			}
     		}catch (Exception e) {
     			e.printStackTrace();

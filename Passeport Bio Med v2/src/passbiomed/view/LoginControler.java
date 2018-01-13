@@ -1,5 +1,6 @@
 package passbiomed.view;
 
+import java.awt.Label;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 
@@ -7,6 +8,8 @@ import com.jfoenix.controls.JFXTextField;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -16,6 +19,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
@@ -40,17 +44,31 @@ public class LoginControler
 	    private JFXPasswordField passwordField;
 
 	    @FXML
-	    private JFXButton connectButton;
+	    private JFXButton connectButton;    
+
+	    @FXML
+	    private JFXComboBox<Label> typeConnexion = new JFXComboBox<Label>();
+	    
+	 
 
     
     static PreparedStatement preparedStatement = null;
+
+//	Test remplissage CBox   
+//    ObservableList<String> typeConnct = FXCollections.observableArrayList();
+    
     
     
     private void LoginControler() 
     {
+  
+    		
+    }
     
-
-    	
+    @FXML
+    private void remplissageCB() 
+    {
+  		typeConnexion.getItems().add(new Label("Médecin"));
     }
     
     int getData() 
