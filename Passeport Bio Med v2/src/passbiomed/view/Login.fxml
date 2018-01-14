@@ -41,7 +41,7 @@
                   <Image url="@../../../../../../Jfoenix/Vague%201/medicine-24399_1280.png" />
                </image>
             </ImageView>
-            <JFXComboBox focusColor="#40a860" layoutX="39.0" layoutY="101.0" onAction="#remplissageCB" prefHeight="27.0" prefWidth="228.0" promptText="Connexion type" stylesheets="@test.css" unFocusColor="WHITE" />
+            <JFXComboBox fx:id="typeConnexion" focusColor="#40a860" layoutX="39.0" layoutY="101.0" prefHeight="27.0" prefWidth="228.0" promptText="Connexion type" stylesheets="@test.css" unFocusColor="WHITE" />
          </children>
       </AnchorPane>
    </children>

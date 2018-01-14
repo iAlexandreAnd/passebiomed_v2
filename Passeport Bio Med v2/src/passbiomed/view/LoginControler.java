@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
@@ -36,6 +37,9 @@ public class LoginControler
 //    private TextField loginField;
 //    @FXML
 //    private TextField passwordField;
+	
+		ObservableList<String> typeConnctList = FXCollections.observableArrayList("Médecin", "Patient");
+	
  
 		@FXML
 	    private JFXTextField loginField;
@@ -47,29 +51,32 @@ public class LoginControler
 	    private JFXButton connectButton;    
 
 	    @FXML
-	    private JFXComboBox<Label> typeConnexion = new JFXComboBox<Label>();
+	    private JFXComboBox<String> typeConnexion;
 	    
-	 
+
+
+	  @FXML
+	  private void initialize() 
+	  {
+//		  typeConnexion.setValue("Type Connexion");
+		  typeConnexion.setItems(typeConnctList);	
+		  typeConnexion.setPromptText("Connexion type. lololol");
+	  }
 
     
     static PreparedStatement preparedStatement = null;
 
 //	Test remplissage CBox   
-//    ObservableList<String> typeConnct = FXCollections.observableArrayList();
+
     
     
     
     private void LoginControler() 
     {
-  
-    		
+
     }
     
-    @FXML
-    private void remplissageCB() 
-    {
-  		typeConnexion.getItems().add(new Label("Médecin"));
-    }
+
     
     int getData() 
     {
@@ -147,7 +154,8 @@ public class LoginControler
 		return verificationLogin;
 	}
     
-    private void newMainWindow() {
+    private void newMainWindow() 
+    {
     	try {
     		FXMLLoader fxmlLoader = new FXMLLoader();
     		fxmlLoader.setLocation(getClass().getResource("PatientOverview.fxml"));
@@ -159,10 +167,11 @@ public class LoginControler
     		stage.setScene(scene);
     		stage.show();
     		
-    		
-    	}catch (Exception e) {
+    	}catch (Exception e) 
+    	{
 			e.printStackTrace();
-		}
+	}
+    	
     }
 }
 

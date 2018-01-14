@@ -11,9 +11,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class PatientConnectController {
+public class PatientConnectController 
+{
 	
 	@FXML
     private TextField nomField;
@@ -28,29 +30,38 @@ public class PatientConnectController {
     static PreparedStatement preparedStatement = null;
     
     @FXML
-    private void initialize() {
+    private void initialize() 
+    {
+    		
     }
     
-    public void setDialogStage(Stage dialogStage) {
+    public void setDialogStage(Stage dialogStage) 
+    {
         this.dialogStage = dialogStage;
+        
     }
     
-    public boolean isOkClicked() {
+    public boolean isOkClicked() 
+    {
         return okClicked;
     }
     
     @FXML
-    private void handleCancel() {
+    private void handleCancel()
+    {
         dialogStage.close();
     }
     
     @FXML
-    private void handleOk() {
+    private void handleOk() 
+    {
     	
-        if (isInputValid()) {
+        if (isInputValid()) 
+        {
         	
         	String sql = "SELECT * FROM Patient WHERE Nom = ? and Prenom = ?";
-    		try {
+    		try 
+    		{
     			Class.forName("com.mysql.jdbc.Driver");
     			System.out.println("Driver OK");
     			
@@ -69,13 +80,14 @@ public class PatientConnectController {
     			
     			if(resultSet.next())
     			{
-    				System.out.println("Patient trouv�");
+    				System.out.println("Patient trouvé");
     			}
     			else
     			{
-    				System.out.println("Patient non-trouv�");
+    				System.out.println("Patient non-trouvé");
     			}
-    		}catch (Exception e) {
+    		}catch (Exception e) 
+    		{
     			e.printStackTrace();
     		}
             okClicked = true;
@@ -84,19 +96,24 @@ public class PatientConnectController {
     }
     
     
-    private boolean isInputValid() {
+    private boolean isInputValid() 
+    {
         String errorMessage = "";
 
-        if (nomField.getText() == null || nomField.getText().length() == 0) {
+        if (nomField.getText() == null || nomField.getText().length() == 0) 
+        {
             errorMessage += "No valid first name!\n"; 
         }
-        if (prenomField.getText() == null || prenomField.getText().length() == 0) {
+        if (prenomField.getText() == null || prenomField.getText().length() == 0) 
+        {
             errorMessage += "No valid last name!\n"; 
         }
 
-        if (errorMessage.length() == 0) {
+        if (errorMessage.length() == 0) 
+        {
             return true;
-        } else {
+        } else 
+        {
             // Show the error message.
             Alert alert = new Alert(AlertType.ERROR);
             alert.initOwner(dialogStage);
