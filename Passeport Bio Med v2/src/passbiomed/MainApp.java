@@ -2,6 +2,7 @@ package passbiomed;
 
 
 import passbiomed.MainApp;
+import passbiomed.model.Medicament;
 import passbiomed.view.PatientConnectController;
 
 import java.io.IOException;
@@ -20,7 +21,7 @@ import javafx.stage.Stage;
 public class MainApp extends Application {
 		
 	private Stage primaryStage;
-
+	
 	
 	public MainApp() {
         
@@ -45,9 +46,7 @@ public class MainApp extends Application {
             primaryStage.setScene(scene);
             primaryStage.show();
             primaryStage.setResizable(false);
-            // Give the controller access to the main app.
-            //*LoginController controller = loader.getController();*
-            //*controller.setMainApp(this);*
+            
         } catch (IOException e) {
             e.printStackTrace();
         }

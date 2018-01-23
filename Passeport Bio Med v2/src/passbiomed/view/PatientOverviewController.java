@@ -9,12 +9,15 @@ import java.sql.ResultSet;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -23,6 +26,13 @@ import passbiomed.model.Medicament;
 import passbiomed.model.Trouble;
 
 public class PatientOverviewController {
+	
+	private ObservableList<Medicament> medicamentData;
+	private ObservableList<Trouble> troubleData;
+	
+	private String loadedPatientID;
+    private String loadedPassbiomedID;
+    
 	@FXML
     private TableView<Trouble> troubleTable;
     @FXML
@@ -41,15 +51,14 @@ public class PatientOverviewController {
     @FXML
     private TableView<Medicament> medicamentTable;
     @FXML
-    private TableColumn<Medicament, String> nomChimiquelColonne;
+    private TableColumn<Medicament, String> nomChimiqueColonne;
     @FXML
-    private TableColumn<Medicament, String> nomCommerciallColonne;
+    private TableColumn<Medicament, String> nomCommercialColonne;
     @FXML
     private TableColumn<Medicament, String> nomMedicamentUniColonne;
     
     static PreparedStatement preparedStatement = null;
     
-    private String loadedPatientID;
     
     @FXML
     private Label nomLabel;
@@ -80,11 +89,21 @@ public class PatientOverviewController {
     
     public PatientOverviewController() {
     	
+    	
     }
     
+    @FXML
     private void initialize() {
-    	// Initialize the person table with the two tables.
+    	loadedPatientID = "0";
+    	loadedPassbiomedID = "0";
+    	//Tableview de medicament
+    	nomChimiqueColonne.setCellValueFactory(new PropertyValueFactory<Medicament, String>("nomChimique"));
+    	nomMedicamentUniColonne.setCellValueFactory(new PropertyValueFactory<Medicament, String>("nomUniversel"));
+    	nomCommercialColonne.setCellValueFactory(new PropertyValueFactory<Medicament, String>("nomCommercial"));
     	
+    	//Tableview de troubles
+    	nomUniverselColonne.setCellValueFactory(new PropertyValueFactory<Trouble, String>("nomUniversel"));
+    	nomCommunColonne.setCellValueFactory(new PropertyValueFactory<Trouble, String>("nomCommun"));
     }
     
     
@@ -110,6 +129,7 @@ public class PatientOverviewController {
 			
 			dialogStage.showAndWait();
 			loadedPatientID = controller.getPatientID();
+			loadedPassbiomedID = controller.getpassbiomedID();
 			return controller.isOkClicked();
     	} catch (IOException e) {
         	e.printStackTrace();
@@ -119,7 +139,25 @@ public class PatientOverviewController {
     
     
     private void displayData() {
+    	medicamentData = FXCollections.observableArrayList();
+    	troubleData = FXCollections.observableArrayList();
+    	
+    	Medicament tempMedicament;
+    	Trouble tempTrouble;
+    	
     	String sql = "SELECT * FROM Patient WHERE IDPatient = ?";
+    	String sql2 = "Select medicament.Nom_commercial, medicament.Nom_universel, medicament.Nom_chimique_IUPAC from patient\n" + 
+    			"inner join passeport_biomed using(IDPasseport_biomed)\n" + 
+    			"inner join repertorier using(IDPasseport_biomed)\n" + 
+    			"inner join medicament using(IDMedicament)\n" + 
+    			"where IDPasseport_biomed=? ;";
+    	String sql3 = "Select troubles.Nom_commun , troubles.Nom_universel, troubles.Stade, troubles.Date_debut\n" + 
+    			", troubles.Date_fin  from patient\n" + 
+    			"inner join passeport_biomed using(IDPasseport_biomed)\n" + 
+    			"inner join consigner using(IDPasseport_biomed)\n" + 
+    			"inner join troubles using(IDTrouble)\n" + 
+    			"where IDPasseport_biomed= ?;";
+    	
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			System.out.println("Driver OK");
@@ -149,16 +187,52 @@ public class PatientOverviewController {
 				sexeLabel.setText(resultSet.getString("Sexe"));
 				iceNomLabel.setText(resultSet.getString("ICE_nom"));
 				iceTelephoneLabel.setText(resultSet.getString("ICE_telephone"));
-				//birthdayLabel.setText(resultSet.getDate("Date_naissance").toString());
+				birthdayLabel.setText(resultSet.getString("Date_naissance").toString());
+				
+				preparedStatement =(PreparedStatement) connect.prepareStatement(sql2);
+				preparedStatement.setString(1, loadedPassbiomedID);
+				
+				resultSet = preparedStatement.executeQuery();
+				while(resultSet.next())
+				{
+					tempMedicament = new Medicament(resultSet.getString("Nom_universel")
+								,resultSet.getString("Nom_commercial")
+								,resultSet.getString("Nom_chimique_IUPAC"));
+					
+					medicamentData.add(tempMedicament);
+				}
+				medicamentTable.setItems(medicamentData);
+				
+				preparedStatement =(PreparedStatement) connect.prepareStatement(sql3);
+				preparedStatement.setString(1, loadedPassbiomedID);
+				
+				resultSet = preparedStatement.executeQuery();
+				while(resultSet.next())
+				{
+					tempTrouble = new Trouble();
+					tempTrouble.setNomUniversel(resultSet.getString("Nom_universel"));
+					tempTrouble.setNomCommun(resultSet.getString("Nom_commun"));
+					tempTrouble.setStade(resultSet.getString("Stade").toString());
+					
+					troubleData.add(tempTrouble);
+				}
+				troubleTable.setItems(troubleData);
 			}
 			else
 			{
 				System.out.println("Patient non-trouvé");
 			}
+			
+			
+			preparedStatement.close();
+			resultSet.close();
+			
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
     }
+    
+    
     
     @FXML
     private void ouvrirPatient() {
@@ -169,7 +243,5 @@ public class PatientOverviewController {
             displayData();
         }
     }
-    
-    
     
 }
