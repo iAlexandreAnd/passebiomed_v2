@@ -27,8 +27,8 @@
       <JFXButton buttonType="RAISED" ellipsisString="" layoutX="99.0" layoutY="230.0" prefHeight="32.0" prefWidth="139.0" style="-fx-background-color: #2E457F#2E457F; -fx-background-radius: 40;" text="Sign Up" textFill="WHITE" underline="true" />
       <AnchorPane layoutX="338.0" layoutY="29.0" prefHeight="368.0" prefWidth="299.0" style="-fx-background-color: #8F3027#8F3027;">
          <children>
-            <JFXTextField fx:id="loginField" alignment="TOP_CENTER" layoutX="14.0" layoutY="157.0" prefHeight="26.0" prefWidth="275.0" promptText="Username/email" stylesheets="@test.css" unFocusColor="WHITE" />
-            <JFXPasswordField fx:id="passwordField" alignment="CENTER" layoutX="14.0" layoutY="214.0" prefHeight="26.0" prefWidth="275.0" promptText="Password" stylesheets="@test.css" unFocusColor="#e1dada" />
+            <JFXTextField fx:id="loginField" alignment="TOP_CENTER" layoutX="14.0" layoutY="157.0" prefHeight="26.0" prefWidth="275.0" promptText="Username/email" unFocusColor="WHITE" />
+            <JFXPasswordField fx:id="passwordField" alignment="CENTER" layoutX="14.0" layoutY="214.0" prefHeight="26.0" prefWidth="275.0" promptText="Password" unFocusColor="#e1dada" />
             <JFXButton fx:id="connectButton" buttonType="RAISED" ellipsisString="" layoutX="14.0" layoutY="270.0" onAction="#handleConnect" prefHeight="32.0" prefWidth="275.0" style="-fx-background-color: #2E457F#2E457F; -fx-background-radius: 40;" text="Sign In" textFill="WHITE" underline="true" />
             <Label layoutX="114.0" layoutY="34.0" style="-fx-border-style: simple;" text="Sign In" textFill="WHITE">
                <font>
@@ -41,7 +41,7 @@
                   <Image url="@../../../../../../Jfoenix/Vague%201/medicine-24399_1280.png" />
                </image>
             </ImageView>
-            <JFXComboBox fx:id="typeConnexion" focusColor="#40a860" layoutX="39.0" layoutY="101.0" prefHeight="27.0" prefWidth="228.0" promptText="Connexion type" stylesheets="@test.css" unFocusColor="WHITE" />
+            <JFXComboBox focusColor="#40a860" layoutX="39.0" layoutY="101.0" prefHeight="27.0" prefWidth="228.0" promptText="Connexion type" unFocusColor="WHITE" />
          </children>
       </AnchorPane>
    </children>

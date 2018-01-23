@@ -17,8 +17,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class MainApp extends Application 
-{
+public class MainApp extends Application {
 		
 	private Stage primaryStage;
 
