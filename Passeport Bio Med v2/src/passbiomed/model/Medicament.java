@@ -11,13 +11,17 @@ public class Medicament {
 	
 	
 	public Medicament() {
-		this.nomUniversel = null;
-		this.nomCommercial = null;
-		this.nomChimique = null;
+		this(null, null, null);
+	}
+	
+	public Medicament(String nomUniversel, String nomCommercial, String nomChimique) {
+		this.nomUniversel = new SimpleStringProperty(nomUniversel);
+        this.nomCommercial = new SimpleStringProperty(nomCommercial);
+        this.nomChimique = new SimpleStringProperty(nomChimique);
 	}
 	
 	public String getNomUniversel() {
-        return nomUniversel.get();
+        return this.nomUniverselProperty().get();
     }
 
     public void setNomUniversel(String nomUniversel) {
@@ -29,7 +33,7 @@ public class Medicament {
     }
     
     public String getNomCommercial() {
-        return nomCommercial.get();
+        return this.nomCommercialProperty().get();
     }
 
     public void setNomCommercial(String nomCommercial) {
@@ -41,7 +45,7 @@ public class Medicament {
     }
     
     public String getNomChimique() {
-        return nomChimique.get();
+        return this.nomChimiqueProperty().get();
     }
 
     public void setNomChimique(String nomChimique) {
