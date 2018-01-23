@@ -22,9 +22,10 @@ public class PatientConnectController
     @FXML
     private TextField prenomField;
     
-    private String patientID; //va récuperer l'id du patient rechercher
+    private String patientID; //va rÃ©cuperer l'id du patient rechercher
     
     private Stage dialogStage;
+    
     private boolean okClicked = false;
     
     static PreparedStatement preparedStatement = null;
@@ -41,8 +42,12 @@ public class PatientConnectController
         
     }
     
-    public boolean isOkClicked() 
-    {
+
+    public String getPatientID() {
+    	return patientID;
+    }
+    
+    public boolean isOkClicked() {
         return okClicked;
     }
     
@@ -81,10 +86,12 @@ public class PatientConnectController
     			if(resultSet.next())
     			{
     				System.out.println("Patient trouvé");
+    				patientID=resultSet.getString(1);
+    				System.out.println(patientID.toString());
     			}
     			else
     			{
-    				System.out.println("Patient non-trouvé");
+    				System.out.println("Patient non-trouvÃ©");
     			}
     		}catch (Exception e) 
     		{
