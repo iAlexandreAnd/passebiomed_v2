@@ -122,6 +122,7 @@ public class PatientOverviewController {
 			dialogStage.setResizable(false);
 			
 			
+			
 			// Attribution du controller.
 			PatientConnectController controller = loader.getController();
 			controller.setDialogStage(dialogStage);

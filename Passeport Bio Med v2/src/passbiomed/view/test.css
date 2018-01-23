@@ -1,0 +1,20 @@
+.jfx-text-field
+{
+    -fx-prompt-text-fill: WHITE;
+    -fx-text-fill: WHITE;
+}
+
+.jfx-password-field
+{
+	-fx-prompt-text-fill: WHITE;
+	-fx-text-fill: WHITE;
+}
+.jfx-combo-box
+{
+	-fx-prompt-text-fill: WHITE;
+}
+
+.jfx-combo-box .label
+{
+	-fx-text-fill: WHITE;
+}
