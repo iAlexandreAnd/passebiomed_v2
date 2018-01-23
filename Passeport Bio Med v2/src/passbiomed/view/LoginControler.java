@@ -1,6 +1,5 @@
 package passbiomed.view;
 
-import java.awt.Label;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 
@@ -8,19 +7,15 @@ import com.jfoenix.controls.JFXTextField;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
@@ -37,9 +32,6 @@ public class LoginControler
 //    private TextField loginField;
 //    @FXML
 //    private TextField passwordField;
-	
-		ObservableList<String> typeConnctList = FXCollections.observableArrayList("Médecin", "Patient");
-	
  
 		@FXML
 	    private JFXTextField loginField;
@@ -48,35 +40,18 @@ public class LoginControler
 	    private JFXPasswordField passwordField;
 
 	    @FXML
-	    private JFXButton connectButton;    
-
-	    @FXML
-	    private JFXComboBox<String> typeConnexion;
-	    
-
-
-	  @FXML
-	  private void initialize() 
-	  {
-//		  typeConnexion.setValue("Type Connexion");
-		  typeConnexion.setItems(typeConnctList);	
-		  typeConnexion.setPromptText("Connexion type. lololol");
-	  }
+	    private JFXButton connectButton;
 
     
     static PreparedStatement preparedStatement = null;
-
-//	Test remplissage CBox   
-
-    
     
     
     private void LoginControler() 
     {
-
-    }
     
 
+    	
+    }
     
     int getData() 
     {
@@ -154,8 +129,7 @@ public class LoginControler
 		return verificationLogin;
 	}
     
-    private void newMainWindow() 
-    {
+    private void newMainWindow() {
     	try {
     		FXMLLoader fxmlLoader = new FXMLLoader();
     		fxmlLoader.setLocation(getClass().getResource("PatientOverview.fxml"));
@@ -167,11 +141,10 @@ public class LoginControler
     		stage.setScene(scene);
     		stage.show();
     		
-    	}catch (Exception e) 
-    	{
+    		
+    	}catch (Exception e) {
 			e.printStackTrace();
-	}
-    	
+		}
     }
 }
 
