@@ -82,14 +82,14 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutY="40.0" prefHeight="274.0" prefWidth="761.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+                        <TableView fx:id="troubleTable" layoutY="40.0" prefHeight="274.0" prefWidth="761.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
                           <columns>
-                            <TableColumn prefWidth="97.0" text="Nom Universel" />
-                            <TableColumn prefWidth="93.0" text="Nom Commun" />
-                              <TableColumn prefWidth="75.0" text="Status" />
-                              <TableColumn prefWidth="75.0" text="Stade" />
-                              <TableColumn prefWidth="75.0" text="Date début" />
-                              <TableColumn prefWidth="75.0" text="Date Fin" />
+                            <TableColumn fx:id="nomUniverselColonne" prefWidth="97.0" text="Nom Universel" />
+                            <TableColumn fx:id="nomCommunColonne" prefWidth="93.0" text="Nom Commun" />
+                              <TableColumn fx:id="statusColonne" prefWidth="75.0" text="Status" />
+                              <TableColumn fx:id="stadeColonne" prefWidth="75.0" text="Stade" />
+                              <TableColumn fx:id="dateDebutColonne" prefWidth="75.0" text="Date début" />
+                              <TableColumn fx:id="dateFinColonne" prefWidth="75.0" text="Date Fin" />
                           </columns>
                         </TableView>
                         <ButtonBar layoutX="482.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
@@ -107,11 +107,12 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutY="40.0" prefHeight="274.0" prefWidth="761.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+                        <TableView fx:id="medicamentTable" layoutY="40.0" prefHeight="274.0" prefWidth="761.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
                           <columns>
-                            <TableColumn prefWidth="97.0" text="Nom Chimique" />
-                            <TableColumn prefWidth="117.0" text="Nom Commercial" />
-                              <TableColumn prefWidth="109.0" text="Nom Universel" />
+                            <TableColumn fx:id="nomChimiqueColonne" prefWidth="97.0" text="Nom Chimique" />
+
+                            <TableColumn fx:id="nomCommercialColonne" prefWidth="117.0" text="Nom Commercial" />
+                            <TableColumn fx:id="nomMedicamentUniColonne" prefWidth="109.0" text="Nom Universel" />
                           </columns>
                         </TableView>
                         <ButtonBar layoutX="482.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">

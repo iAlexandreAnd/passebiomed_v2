@@ -22,7 +22,9 @@ public class PatientConnectController
     @FXML
     private TextField prenomField;
     
-    private String patientID; //va rÃ©cuperer l'id du patient rechercher
+    private String patientID; //va r�cuperer l'id du patient rechercher
+    private String passbiomedID; //va r�cuperer l'id du passbiomed qui est n�cessaire a la liaison des maladies/m�dicaments
+
     
     private Stage dialogStage;
     
@@ -45,6 +47,10 @@ public class PatientConnectController
 
     public String getPatientID() {
     	return patientID;
+    }
+    
+    public String getpassbiomedID() {
+    	return passbiomedID;
     }
     
     public boolean isOkClicked() {
@@ -87,14 +93,18 @@ public class PatientConnectController
     			{
     				System.out.println("Patient trouvé");
     				patientID=resultSet.getString(1);
+    				passbiomedID=resultSet.getString("IDpasseport_biomed");
     				System.out.println(patientID.toString());
     			}
     			else
     			{
     				System.out.println("Patient non-trouvÃ©");
     			}
-    		}catch (Exception e) 
-    		{
+
+    			
+    			preparedStatement.close();
+    			resultSet.close();
+    		}catch (Exception e) {
     			e.printStackTrace();
     		}
             okClicked = true;

@@ -3,6 +3,7 @@ package passbiomed.view;
 import java.awt.Label;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXTextField;
 import com.mysql.jdbc.Connection;
@@ -17,6 +18,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import com.jfoenix.controls.JFXButton;
@@ -31,9 +33,9 @@ public class LoginControler
 	private int data;
 	
 //	
-//	@FXML
-//	private javafx.scene.control.Button connectButton;
-//	@FXML
+//	  @FXML
+//	  private javafx.scene.control.Button connectButton;
+//	  @FXML
 //    private TextField loginField;
 //    @FXML
 //    private TextField passwordField;
@@ -47,7 +49,6 @@ public class LoginControler
 	    @FXML
 	    private JFXPasswordField passwordField;
 
-	    @FXML
 	    private JFXButton connectButton;    
 
 	    @FXML
@@ -62,7 +63,6 @@ public class LoginControler
 		  typeConnexion.setItems(typeConnctList);	
 		  typeConnexion.setPromptText("Connexion type. lololol");
 	  }
-
     
     static PreparedStatement preparedStatement = null;
 
@@ -76,7 +76,6 @@ public class LoginControler
 
     }
     
-
     
     int getData() 
     {
@@ -118,6 +117,7 @@ public class LoginControler
     }
     
     
+    
     public static int ConnectDataBase (String loginField, String passwordField) {
     	String sql = "SELECT * FROM Login WHERE Login_nom = ? and Login_password = ?";
     	int verificationLogin =0;
@@ -148,6 +148,9 @@ public class LoginControler
 			{
 				verificationLogin=0;
 			}
+			
+			preparedStatement.close();
+			resultSet.close();
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
