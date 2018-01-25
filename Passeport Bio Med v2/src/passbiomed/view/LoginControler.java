@@ -13,6 +13,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
@@ -39,7 +40,7 @@ public class LoginControler
 //    @FXML
 //    private TextField passwordField;
 	
-		ObservableList<String> typeConnctList = FXCollections.observableArrayList("Médecin", "Patient");
+		ObservableList<String> typeConnctList = FXCollections.observableArrayList("Medecin", "Patient");
 	
  
 		@FXML
@@ -62,7 +63,7 @@ public class LoginControler
 	  {
 //		  typeConnexion.setValue("Type Connexion");
 		  typeConnexion.setItems(typeConnctList);	
-		  typeConnexion.setPromptText("Connexion type. lololol");
+		  typeConnexion.setPromptText("Connexion type");
 	  }
 
     
@@ -163,9 +164,9 @@ public class LoginControler
     {
     	try {
     		FXMLLoader fxmlLoader = new FXMLLoader();
-    		fxmlLoader.setLocation(getClass().getResource("PatientOverview.fxml"));
+    		fxmlLoader.setLocation(getClass().getResource("MainMenu.fxml"));
     		
-    		Scene scene = new Scene(fxmlLoader.load(),800, 600);
+    		Scene scene = new Scene(fxmlLoader.load(),1000, 600);
     		Stage stage = new Stage();
     		
     		stage.setTitle("Patient Overview");
@@ -175,7 +176,7 @@ public class LoginControler
     	}catch (Exception e) 
     	{
 			e.printStackTrace();
-	}
+    	}
     	
     }
 }
