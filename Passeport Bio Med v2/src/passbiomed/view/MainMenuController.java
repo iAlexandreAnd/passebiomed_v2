@@ -2,8 +2,11 @@ package passbiomed.view;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 import passbiomed.MainApp;
 
 public class MainMenuController 
@@ -19,27 +22,47 @@ public class MainMenuController
     private JFXButton boutonCreer;
 
     @FXML
-    private JFXButton BoutonConsulter;
+    private JFXButton boutonConsulter;
 
     @FXML
-    private JFXButton BoutonStatistiques;
+    private JFXButton butonStatistiques;
 
     @FXML
-    private JFXButton BoutonSoon;
+    private JFXButton boutonSoon;
     
-    private MainApp mainAppli;
+    private MainApp mainApp;
+    private Stage stage;
     
     public MainMenuController() 
     {
     	
     }
     
+    @FXML
     private void initialize() 
     {
-    	// Initialize fonction
     	 	
     }
     
+    @FXML
+    private void handleBoutonConsulter() {
+    	
+    	Stage stage = (Stage) boutonConsulter.getScene().getWindow();
+    	
+    	try {
+    		FXMLLoader fxmlLoader = new FXMLLoader();
+    		fxmlLoader.setLocation(getClass().getResource("PatientOverview.fxml"));
+		
+    		
+    		Scene scene = new Scene(fxmlLoader.load(),800, 600);
+    		stage.setScene(scene);
+    		stage.show();
+    		
+    	}catch (Exception e) 
+    	{
+			e.printStackTrace();
+    	}
+    }
     
 
 }
