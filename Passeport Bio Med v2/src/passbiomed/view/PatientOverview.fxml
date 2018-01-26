@@ -131,6 +131,7 @@
       <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="256.0" prefWidth="336.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
          <children>
             <Button layoutX="22.0" layoutY="14.0" mnemonicParsing="false" onAction="#ouvrirPatient" prefHeight="91.0" prefWidth="120.0" text="Ouvrir Patient" />
+            <Button fx:id="retourButton" layoutX="22.0" layoutY="217.0" mnemonicParsing="false" onAction="#handleRetour" text="&lt;- Retour" />
          </children>
       </AnchorPane>
    </children>
