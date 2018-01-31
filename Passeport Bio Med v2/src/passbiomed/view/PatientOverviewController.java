@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 
+import com.jfoenix.controls.JFXTextField;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
@@ -14,10 +15,12 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
@@ -61,6 +64,10 @@ public class PatientOverviewController
     
     static PreparedStatement preparedStatement = null;
     
+    @FXML
+    private JFXTextField nomField;
+    @FXML
+    private JFXTextField prenomField;
     
     @FXML
     private Label nomLabel;
@@ -112,35 +119,76 @@ public class PatientOverviewController
     }
     
     
-    public boolean showPatientConnect() {
-		try {
-			
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("view/PatientConnect.fxml"));
-			AnchorPane page = (AnchorPane) loader.load();
-			
-			// Creation du dialogue.
-			Stage dialogStage = new Stage();
-			dialogStage.setTitle("Find Patient");
-			Scene scene = new Scene(page);
-			dialogStage.setScene(scene);
-			dialogStage.setResizable(false);
-			
-			
-			// Attribution du controller.
-			PatientConnectController controller = loader.getController();
-			controller.setDialogStage(dialogStage);
+    @FXML
+    private void handleOk() {
+    	
+    	String nomFieldS = this.nomField.getText();
+    	String prenomFieldS = this.prenomField.getText();
+        if (isInputValid()) {
+        	
+        	String sql = "SELECT * FROM Patient WHERE Nom = ? and Prenom = ?";
+    		try {
+    			Class.forName("com.mysql.jdbc.Driver");
+    			System.out.println("Driver OK");
+    			
+    			String url = "jdbc:mysql://localhost:3306/passbiomed";
+    			String user = "root";
+    			String password = "Secret123";
+    			
+    			Connection connect = (Connection) DriverManager.getConnection(url, user, password);
+    			ResultSet resultSet = null;
+    			
+    			preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
+    			preparedStatement.setString(1, nomFieldS);
+    			preparedStatement.setString(2, prenomFieldS);
+    			
+    			resultSet = preparedStatement.executeQuery();
+    			
+    			if(resultSet.next())
+    			{
+    				System.out.println("Patient trouvé");
+    				loadedPatientID=resultSet.getString(1);
+    				loadedPassbiomedID=resultSet.getString("IDpasseport_biomed");
+    				displayData();
+    			}
+    			else
+    			{
+    				System.out.println("Patient non-trouvé");
+    			}
+    			
+    			preparedStatement.close();
+    			resultSet.close();
+    		}catch (Exception e) {
+    			e.printStackTrace();
+    		}
+        }
+    }
+    
+    
+    private boolean isInputValid() {
+        String errorMessage = "";
 
-			
-			dialogStage.showAndWait();
-			loadedPatientID = controller.getPatientID();
-			loadedPassbiomedID = controller.getpassbiomedID();
-			return controller.isOkClicked();
-    	} catch (IOException e) {
-        	e.printStackTrace();
-        	return false;
-    	}
-	}
+        if (nomField == null) {
+            errorMessage += "No valid first name!\n"; 
+        }
+        if (prenomField == null) {
+            errorMessage += "No valid last name!\n"; 
+        }
+
+        if (errorMessage.length() == 0) {
+            return true;
+        } else {
+            // Show the error message.
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Invalid Fields");
+            alert.setHeaderText("Please correct invalid fields");
+            alert.setContentText(errorMessage);
+
+            alert.showAndWait();
+
+            return false;
+        }
+    }
     
     
     private void displayData() {
@@ -238,17 +286,6 @@ public class PatientOverviewController
     }
     
     
-    
-    @FXML
-    private void ouvrirPatient() {
-    	System.out.println("Patient Connect show");
-    	boolean okClicked = showPatientConnect();
-    	if (okClicked) {
-            System.out.println("Patient Connect close");
-            displayData();
-        }
-    }
-    
     @FXML
     private void handleRetour() 
     {
@@ -270,4 +307,102 @@ public class PatientOverviewController
     	
     }
     
+    
+    
+    @FXML
+    private void handleNewTrouble() {
+    	if(loadedPatientID.contentEquals("0"))
+    	{
+    		Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Aucun Patient");
+            alert.setContentText("Aucun patient n'a ete charge");
+            alert.showAndWait();
+    	}
+    	else
+    	{
+    		
+    	}
+    }
+    
+    @FXML
+    private void handleDeleteTrouble() {
+    	if(loadedPatientID.contentEquals("0"))
+    	{
+    		Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Aucun Patient");
+            alert.setContentText("Aucun patient n'a ete charge");
+            alert.showAndWait();
+    	}
+    	else
+    	{
+    		
+    	}
+    }
+    
+    @FXML
+    private void handleEditTrouble() {
+    	if(loadedPatientID.contentEquals("0"))
+    	{
+    		Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Aucun Patient");
+            alert.setContentText("Aucun patient n'a ete charge");
+            alert.showAndWait();
+    	}
+    	else
+    	{
+    		
+    	}
+    }
+    
+    
+    @FXML
+    private void handleNewMedic() {
+    	if(loadedPatientID.contentEquals("0"))
+    	{
+    		Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Aucun Patient");
+            alert.setContentText("Aucun patient n'a ete charge");
+            alert.showAndWait();
+    	}
+    	else
+    	{
+    		
+    	}
+    }
+    
+    @FXML
+    private void handleDeleteMedic() {
+    	if(loadedPatientID.contentEquals("0"))
+    	{
+    		Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Aucun Patient");
+            alert.setContentText("Aucun patient n'a ete charge");
+            alert.showAndWait();
+    	}
+    	else
+    	{
+    		
+    	}
+    }
+    
+    @FXML
+    private void handleEditMedic() {
+    	if(loadedPatientID.contentEquals("0"))
+    	{
+    		Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Aucun Patient");
+            alert.setContentText("Aucun patient n'a ete charge");
+            alert.showAndWait();
+    	}
+    	else
+    	{
+    		
+    	}
+    }
 }

@@ -179,10 +179,8 @@ public class LoginControler
     		Scene scene = new Scene(fxmlLoader.load(),1000, 600);
     		Stage stage = new Stage();
     		
-//    		String str = getValueCombo();
-//    		System.out.println(str);
-    		
-    		stage.setTitle("Patient Overview");
+    		stage.setTitle("Main Menu");
+
     		stage.setScene(scene);
     		stage.show();
     		
