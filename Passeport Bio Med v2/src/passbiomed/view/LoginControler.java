@@ -5,8 +5,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
-//import javax.xml.bind.TypeConstraintException;
-
 import com.jfoenix.controls.JFXTextField;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
@@ -74,12 +72,6 @@ public class LoginControler
 //	Test remplissage CBox   
 
     
-//    public String getValueCombo() 
-//    {
-//    		String str = typeConnexion.getValue();
-//    		
-//    		return str;
-//    }
     
     
     private void LoginControler() 
@@ -129,8 +121,7 @@ public class LoginControler
     
     
     
-    public static int ConnectDataBase (String loginField, String passwordField) 
-    {
+    public static int ConnectDataBase (String loginField, String passwordField) {
     	String sql = "SELECT * FROM Login WHERE Login_nom = ? and Login_password = ?";
     	int verificationLogin =0;
 		try {
@@ -150,12 +141,11 @@ public class LoginControler
 			
 			resultSet = preparedStatement.executeQuery();
 			
-
-			
 			if(resultSet.next())
 			{
 				verificationLogin=1;
-				System.out.println("Verification : Succes");		
+				System.out.println("Verification : Succes");
+				
 			}
 			else
 			{
@@ -180,7 +170,6 @@ public class LoginControler
     		Stage stage = new Stage();
     		
     		stage.setTitle("Main Menu");
-
     		stage.setScene(scene);
     		stage.show();
     		
