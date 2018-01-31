@@ -29,7 +29,8 @@ import passbiomed.MainApp;
 import passbiomed.model.Medicament;
 import passbiomed.model.Trouble;
 
-public class PatientOverviewController {
+public class PatientOverviewController 
+{
 	
 	private ObservableList<Medicament> medicamentData;
 	private ObservableList<Trouble> troubleData;
@@ -272,7 +273,7 @@ public class PatientOverviewController {
 			}
 			else
 			{
-				System.out.println("Patient non-trouvé");
+				System.out.println("Patient non-trouvï¿½");
 			}
 			
 			
@@ -286,22 +287,23 @@ public class PatientOverviewController {
     
     
     @FXML
-    private void handleRetour() {
+    private void handleRetour() 
+    {
     	Stage stage = (Stage) retourButton.getScene().getWindow();
-    	
-    	try {
-    		FXMLLoader fxmlLoader = new FXMLLoader();
-    		fxmlLoader.setLocation(getClass().getResource("MainMenu.fxml"));
+    		try 
+    		{
+    			FXMLLoader fxmlLoader = new FXMLLoader();
+    			fxmlLoader.setLocation(getClass().getResource("MainMenu.fxml"));
 		
     		
-    		Scene scene = new Scene(fxmlLoader.load(),1000, 600);
-    		stage.setScene(scene);
-    		stage.show();
+    			Scene scene = new Scene(fxmlLoader.load(),1000, 600);
+    			stage.setScene(scene);
+    			stage.show();
     		
-    	}catch (Exception e) 
-    	{
-			e.printStackTrace();
-    	}
+    		}catch (Exception e) 
+    			{
+    				e.printStackTrace();
+    			}
     	
     }
     
