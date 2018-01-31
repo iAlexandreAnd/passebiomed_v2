@@ -261,6 +261,7 @@ public class PatientOverviewController
     		
     			Scene scene = new Scene(fxmlLoader.load(),1000, 600);
     			stage.setScene(scene);
+    			stage.centerOnScreen();
     			stage.show();
     		
     		}catch (Exception e) 
