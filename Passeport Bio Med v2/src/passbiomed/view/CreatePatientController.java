@@ -2,6 +2,9 @@ package passbiomed.view;
 
 
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
@@ -74,7 +77,7 @@ public class CreatePatientController
     private JFXTextField TextFieldICE_Tel;
 
     @FXML
-    private JFXComboBox<?> ComboBox_GS;
+    private JFXComboBox<String> ComboBox_GS;
 
     @FXML
     private JFXRadioButton RadioButtonMale;
@@ -100,20 +103,50 @@ public class CreatePatientController
     @FXML
     private JFXButton previousButtonToWin2;
     
+    @FXML
+    private GridPane GridPaneInfo4;
+
+    @FXML
+    private JFXTextField mailAddress;
+
+    @FXML
+    private JFXTextField logginName;
+
+    @FXML
+    private JFXTextField PasswordName;
+
+    @FXML
+    private JFXButton CréerUtilisateur;
+    
+
+    @FXML
+    private JFXButton previousButtonToWin3;
+
+    @FXML
+    private JFXButton NextButtonWin4;
+    
     ObservableList<String> listePays = FXCollections.observableArrayList("Belgique", "Angleterre", "Canada", "Japon");
+    ObservableList<String> groupeSanguin = FXCollections.observableArrayList("A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-");
     
     @FXML
     private void initialize() 
     {
     		GridPaneInfo2.setVisible(false);
     		GridPaneInfo3.setVisible(false);
+    		GridPaneInfo4.setVisible(false);
     		ComboBoxPays.setItems(listePays);
+    		ComboBox_GS.setItems(groupeSanguin);
     		
+    		LocalDate localDate = LocalDate.now();
     		
+    		DatePickerBirthday.setValue(localDate);
+    	    		
 //    		previousButton.setDisable(true);
     		previousButton.setVisible(false);
     		previousButtonToWin2.setVisible(false);
+    		previousButtonToWin3.setVisible(false);
     		NextButtonWin3.setVisible(false);
+    		NextButtonWin4.setVisible(false);
     		
     }
     
@@ -127,23 +160,14 @@ public class CreatePatientController
     		String pays = ComboBoxPays.getValue();
     		String localité = TextFieldLocalité.getText();
     		
-    		System.out.println(nom);
-    		System.out.println(prénom);
-    		System.out.println(tel);
-    		System.out.println(adresse);
-    		System.out.println(pays);
-    		System.out.println(localité);
     		
     		if(nom.length()== 0||prénom.length()== 0||tel.length()== 0||adresse.length()== 0||pays==null||localité.length()== 0) 
     		{
-    			// fonctionne pas???
-    			
     			Alert alerto = new Alert(AlertType.ERROR);
         		alerto.setTitle("Erreur");
         		alerto.setHeaderText("Erreur");
-        		alerto.setContentText("Touts les champs n'ont pas été remplis correctement.");
-        		alerto.showAndWait();
-    			
+        		alerto.setContentText("Tous les champs n'ont pas été remplis correctement.");
+        		alerto.showAndWait();   			
     		}
     		
     		else 
@@ -155,20 +179,16 @@ public class CreatePatientController
         		NextButtonWin3.setVisible(true);
     		}
     		
+    		System.out.println("Nom: "+nom);
+    		System.out.println("Prénom: "+prénom);
+    		System.out.println("Tel: "+tel);
+    		System.out.println("Adresse: "+adresse);
+    		System.out.println("Pays: "+pays);
+    		System.out.println("Localité: "+localité);
+    		
     	
     }
     
-    @FXML
-    private void buttonActionPreviousWin2() 
-    {
-    		GridPaneInfo2.setVisible(true);
-		GridPaneInfo3.setVisible(false);
-		NextButtonWin3.setDisable(false);
-		previousButtonToWin2.setVisible(false);
-		previousButton.setVisible(true);
-    	
-    	
-    }
     @FXML
     private void buttonActionPrevious() 
     {
@@ -179,18 +199,98 @@ public class CreatePatientController
     		NextButtonWin3.setVisible(false);
     } 
    
+    
+    @FXML
+    private void buttonActionPreviousWin2() 
+    {
+    		GridPaneInfo2.setVisible(true);
+		GridPaneInfo3.setVisible(false);
+		NextButtonWin3.setVisible(true);
+		NextButtonWin4.setVisible(false);
+		previousButtonToWin2.setVisible(false);
+		previousButton.setVisible(true);
+    	
+    }
+    
+    @FXML
+    private void buttonActionPreviousWin3() 
+    {
+    		GridPaneInfo3.setVisible(true);
+		GridPaneInfo4.setVisible(false);
+		NextButtonWin4.setDisable(false);
+		previousButtonToWin3.setVisible(false);
+		previousButtonToWin2.setVisible(true);
+ 	
+    }
+
     @FXML
     private void buttonActionToWin3() 
     {
-    		GridPaneInfo1.setVisible(false);
-    		GridPaneInfo2.setVisible(false);
-    		GridPaneInfo3.setVisible(true);
     		
-    		previousButton.setVisible(false);
-    		previousButtonToWin2.setVisible(true);
-    		NextButton.setVisible(false);
-    		NextButtonWin3.setDisable(true);
+    		String CodePostal = TextFieldCP.getText();
+    		String ICE_Nom = TextFieldICE_Nom.getText();
+    		String ICE_Tel = TextFieldICE_Tel.getText();
+    		String groupe_sanguin = ComboBox_GS.getValue();
+    		String gender = null;
+    		
+    		if(RadioButtonFemale.isSelected()) 
+    		{
+    			gender = "Féminin";
+    		}
+    		else if(RadioButtonMale.isSelected())
+    		{
+    			 gender = "Masculin";
+    		}
+    		
+    		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/YYYY");
+    		String dateVari = (DatePickerBirthday.getValue().format(formatter));
+    		
+    		LocalDate localDat = LocalDate.now();
+    		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/YYYY");
+    		String formattedDate = localDat.format(dtf);
+    		
+    		if(CodePostal.length()==0||ICE_Nom.length()==0||ICE_Tel.length()==0||groupe_sanguin.length()==0||gender.length()==0||dateVari.equals(formattedDate)) 
+    		{
+    			Alert alertus = new Alert(AlertType.ERROR);
+        		alertus.setTitle("Erreur");
+        		alertus.setHeaderText("Erreur");
+        		alertus.setContentText("Touts les champs n'ont pas été remplis correctement.");
+        		alertus.showAndWait(); 
+        		
+    		}
+    		else 
+    		{
+    			GridPaneInfo1.setVisible(false);
+        		GridPaneInfo2.setVisible(false);
+        		GridPaneInfo3.setVisible(true);
+        		previousButton.setVisible(false);
+        		previousButtonToWin2.setVisible(true);
+        		NextButton.setVisible(false);
+        		NextButtonWin3.setVisible(false);
+        		NextButtonWin4.setVisible(true);
+        		
+    		}
+    		
+    		
+    		System.out.println("Code postal: "+CodePostal);
+    		System.out.println("ICE nom: "+ICE_Nom);
+    		System.out.println("ICE tel: "+ICE_Tel);
+    		System.out.println("Groupe sanguin: "+groupe_sanguin);
+    		System.out.println("Genre: "+gender);
+    		System.out.println("Date de naissance: "+dateVari);
+    
+    		
     } 
+    
+    @FXML 
+    private void buttonActionToWin4()
+    {
+    		GridPaneInfo3.setVisible(false);
+    		GridPaneInfo4.setVisible(true);
+    		previousButtonToWin2.setVisible(false);
+    		previousButtonToWin3.setVisible(true);
+    		NextButtonWin4.setDisable(true);  		 		
+    }
     
     @FXML
     private void handleRetour() 
@@ -204,6 +304,7 @@ public class CreatePatientController
     		
     			Scene scene = new Scene(fxmlLoader.load(),1000, 600);
     			stage.setScene(scene);
+    			stage.centerOnScreen();
     			stage.show();
     		
     		}catch (Exception e) 

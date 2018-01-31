@@ -46,10 +46,8 @@ public class MainMenuController
     
     @FXML
     private void handleBoutonConsulter() 
-    {
-    	
+    {	
     	Stage stage = (Stage) boutonConsulter.getScene().getWindow();
-    	
     	try {
     		FXMLLoader fxmlLoader = new FXMLLoader();
     		fxmlLoader.setLocation(getClass().getResource("PatientOverview.fxml"));
@@ -57,6 +55,7 @@ public class MainMenuController
     		
     		Scene scene = new Scene(fxmlLoader.load(),800, 600);
     		stage.setScene(scene);
+    		stage.centerOnScreen();
     		stage.show();
     		
     		}catch (Exception e) 
@@ -78,6 +77,7 @@ public class MainMenuController
     		
     		Scene scene = new Scene(fxmlLoader.load(),686, 600);
     		stage.setScene(scene);
+    		stage.centerOnScreen();
     		stage.show();
     		
     		}catch (Exception e) 
