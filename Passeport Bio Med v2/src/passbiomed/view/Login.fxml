@@ -38,7 +38,7 @@
             <Text fontSmoothingType="LCD" layoutX="96.0" layoutY="342.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forgot Password?" textAlignment="CENTER" underline="true" />
             <ImageView fitHeight="47.0" fitWidth="63.0" layoutX="39.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../Ressources/Wallpaper/medicine-24399_1280.png" />
+                  <Image url="@../../../Ressources/Icons/medicine-24399_1280.png" />
                </image>
             </ImageView>
             <JFXComboBox fx:id="typeConnexion" focusColor="#40a860" layoutX="39.0" layoutY="101.0" prefHeight="27.0" prefWidth="228.0" promptText="Connexion type" stylesheets="@styleCss.css" unFocusColor="WHITE" />

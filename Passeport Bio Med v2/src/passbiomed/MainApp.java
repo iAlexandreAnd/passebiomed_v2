@@ -3,7 +3,6 @@ package passbiomed;
 
 import passbiomed.MainApp;
 import passbiomed.model.Medicament;
-import passbiomed.view.PatientConnectController;
 
 import java.io.IOException;
 
