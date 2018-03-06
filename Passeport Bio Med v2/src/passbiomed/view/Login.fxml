@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="412.0" prefWidth="651.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="passbiomed.view.LoginControler">
+<AnchorPane fx:id="LoginPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="412.0" prefWidth="651.0" stylesheets="@styleCss.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="passbiomed.view.LoginControler">
    <children>
       <ImageView fitHeight="412.0" fitWidth="651.0" pickOnBounds="true">
          <image>
@@ -25,7 +25,7 @@
       </Label>
       <Label layoutX="66.0" layoutY="197.0" text="Your dedicated healthcare service." textFill="WHITE" />
       <JFXButton buttonType="RAISED" ellipsisString="" layoutX="99.0" layoutY="230.0" prefHeight="32.0" prefWidth="139.0" style="-fx-background-color: #2E457F#2E457F; -fx-background-radius: 40;" text="Sign Up" textFill="WHITE" underline="true" />
-      <AnchorPane layoutX="338.0" layoutY="29.0" prefHeight="368.0" prefWidth="299.0" style="-fx-background-color: #8F3027#8F3027;">
+      <AnchorPane layoutX="338.0" layoutY="29.0" prefHeight="368.0" prefWidth="299.0" style="-fx-background-color: #8F3027#8F3027; -fx-border-color: #CA8A32#CA8A32 #CA8A32#CA8A32; -fx-border-width: 2; -fx-border-radius: 4; -fx-background-radius: 6;">
          <children>
             <JFXTextField fx:id="loginField" alignment="TOP_CENTER" layoutX="14.0" layoutY="157.0" prefHeight="26.0" prefWidth="275.0" promptText="Username/email" stylesheets="@styleCss.css" unFocusColor="WHITE" />
             <JFXPasswordField fx:id="passwordField" alignment="CENTER" layoutX="14.0" layoutY="214.0" prefHeight="26.0" prefWidth="275.0" promptText="Password" stylesheets="@styleCss.css" unFocusColor="#e1dada" />
@@ -38,7 +38,7 @@
             <Text fontSmoothingType="LCD" layoutX="96.0" layoutY="342.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forgot Password?" textAlignment="CENTER" underline="true" />
             <ImageView fitHeight="47.0" fitWidth="63.0" layoutX="39.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../Ressources/Icons/medicine-24399_1280.png" />
+                  <Image url="@../../../Ressources/Wallpaper/medicine-24399_1280.png" />
                </image>
             </ImageView>
             <JFXComboBox fx:id="typeConnexion" focusColor="#40a860" layoutX="39.0" layoutY="101.0" prefHeight="27.0" prefWidth="228.0" promptText="Connexion type" stylesheets="@styleCss.css" unFocusColor="WHITE" />

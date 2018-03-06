@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
+//import javax.xml.bind.TypeConstraintException;
+
 import com.jfoenix.controls.JFXTextField;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
@@ -18,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
@@ -42,7 +45,9 @@ public class LoginControler
 	
 		ObservableList<String> typeConnctList = FXCollections.observableArrayList("Medecin", "Patient");
 	
- 
+	    @FXML
+	    private AnchorPane LoginPane;
+		
 		@FXML
 	    private JFXTextField loginField;
 
@@ -72,6 +77,12 @@ public class LoginControler
 //	Test remplissage CBox   
 
     
+//    public String getValueCombo() 
+//    {
+//    		String str = typeConnexion.getValue();
+//    		
+//    		return str;
+//    }
     
     
     private void LoginControler() 
@@ -121,7 +132,8 @@ public class LoginControler
     
     
     
-    public static int ConnectDataBase (String loginField, String passwordField) {
+    public static int ConnectDataBase (String loginField, String passwordField) 
+    {
     	String sql = "SELECT * FROM Login WHERE Login_nom = ? and Login_password = ?";
     	int verificationLogin =0;
 		try {
@@ -144,8 +156,7 @@ public class LoginControler
 			if(resultSet.next())
 			{
 				verificationLogin=1;
-				System.out.println("Verification : Succes");
-				
+				System.out.println("Verification : Succes");	
 			}
 			else
 			{
@@ -169,8 +180,12 @@ public class LoginControler
     		Scene scene = new Scene(fxmlLoader.load(),1000, 600);
     		Stage stage = new Stage();
     		
-    		stage.setTitle("Main Menu");
+//    		String str = getValueCombo();
+//    		System.out.println(str);
+    		
+    		stage.setTitle("Patient Overview");
     		stage.setScene(scene);
+    		stage.setResizable(false);
     		stage.show();
     		
     	}catch (Exception e) 
