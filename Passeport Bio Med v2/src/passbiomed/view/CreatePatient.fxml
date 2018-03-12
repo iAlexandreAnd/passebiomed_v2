@@ -225,16 +225,16 @@
                   <Image url="@../../../Ressources/Icons/001-technology.png" />
                </image>
             </ImageView>
-            <JFXTextField fx:id="mailAddress" alignment="CENTER" promptText="Adresse e-mail" GridPane.columnIndex="1" />
-            <JFXTextField fx:id="logginName" alignment="CENTER" promptText="Identifiant" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <JFXTextField fx:id="PasswordName" alignment="CENTER" promptText="Mot de passe" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <JFXButton fx:id="CréerUtilisateur" buttonType="RAISED" ellipsisString="" onAction="#createUser" prefHeight="32.0" prefWidth="139.0" ripplerFill="#496ab8" style="-fx-background-color: #D22E2A#D22E2A; -fx-background-radius: 40;" text="Créer patient" textFill="WHITE" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <JFXTextField fx:id="mailAddress" alignment="CENTER" promptText="Adresse e-mail" viewOrder="1.0" GridPane.columnIndex="1" />
+            <JFXTextField fx:id="logginName" alignment="CENTER" promptText="Identifiant" viewOrder="3.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <JFXTextField fx:id="PasswordName" alignment="CENTER" promptText="Mot de passe" viewOrder="4.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <JFXButton fx:id="CréerUtilisateur" buttonType="RAISED" ellipsisString="" onAction="#createUser" prefHeight="32.0" prefWidth="139.0" ripplerFill="#496ab8" style="-fx-background-color: #D22E2A#D22E2A; -fx-background-radius: 40;" text="Créer patient" textFill="WHITE" underline="true" viewOrder="5.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <ImageView fitHeight="37.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
                <image>
                   <Image url="@../../../Ressources/Icons/002-qr-code.png" />
                </image>
             </ImageView>
-            <JFXTextField fx:id="numéroRegistre" alignment="CENTER" promptText="Numéro registre national" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <JFXTextField fx:id="numéroRegistre" alignment="CENTER" promptText="Numéro registre national" viewOrder="2.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
          <opaqueInsets>
             <Insets />

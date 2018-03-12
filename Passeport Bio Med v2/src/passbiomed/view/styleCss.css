@@ -2,6 +2,8 @@
 {
     -fx-prompt-text-fill: WHITE;
     -fx-text-fill: WHITE;
+    -fx-alignment: center ;
+    -fx-text-alignment: center;
 }
 
 .jfx-password-field
@@ -12,9 +14,24 @@
 .jfx-combo-box
 {
 	-fx-prompt-text-fill: WHITE;
+	-fx-alignment: CENTER;
+	-fx-text-alignment: center;
+	
 }
 
-.jfx-combo-box .label
+.jfx-combo-box .string
 {
 	-fx-text-fill: WHITE;
+	-fx-alignment: CENTER;
+	-fx-text-alignment: center;
+	
+}
+
+.text-field:empty 
+{
+    -fx-alignment: center ;
+}
+.text-field:empty:focused 
+{
+    -fx-alignment: center-left ;
 }

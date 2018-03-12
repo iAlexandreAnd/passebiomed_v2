@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import passbiomed.MainApp;
@@ -29,6 +30,7 @@ public class MainMenuController
 
     @FXML
     private JFXButton boutonSoon;
+ 
     
     private MainApp mainApp;
     private Stage stage;
@@ -41,7 +43,7 @@ public class MainMenuController
     @FXML
     private void initialize() 
     {
-    	 	
+  
     }
     
     @FXML
@@ -67,7 +69,6 @@ public class MainMenuController
     @FXML
     private void handleBoutonCreer() 
     {
-    	
     	Stage stage = (Stage) boutonConsulter.getScene().getWindow();
     	
     	try {

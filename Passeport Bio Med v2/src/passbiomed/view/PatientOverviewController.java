@@ -2,6 +2,7 @@ package passbiomed.view;
 
 
 
+import java.awt.TextField;
 import java.io.IOException;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -22,6 +23,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.skin.TextFieldSkin;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -146,14 +148,14 @@ public class PatientOverviewController
     			
     			if(resultSet.next())
     			{
-    				System.out.println("Patient trouvé");
+    				System.out.println("Patient trouvï¿½");
     				loadedPatientID=resultSet.getString(1);
     				loadedPassbiomedID=resultSet.getString("IDpasseport_biomed");
     				displayData();
     			}
     			else
     			{
-    				System.out.println("Patient non-trouvé");
+    				System.out.println("Patient non-trouvï¿½");
     			}
     			
     			preparedStatement.close();
@@ -322,8 +324,27 @@ public class PatientOverviewController
     	}
     	else
     	{
-    		
-    	}
+  
+    		    	try 
+    		    	{
+    		    		FXMLLoader fxmlLoader = new FXMLLoader();
+    		    		fxmlLoader.setLocation(getClass().getResource("medicWindow.fxml"));
+    		    		
+    		    		Scene scene = new Scene(fxmlLoader.load());
+    		    		Stage stage = new Stage();
+    		    		
+    		    		stage.setTitle("Ajout d'un trouble");
+    		    		stage.setScene(scene);
+    		    		stage.centerOnScreen();
+    		    		stage.initModality(Modality.APPLICATION_MODAL);
+    		    		stage.show();
+    		    		
+    		    	}catch (Exception e) 
+    		    	{
+    					e.printStackTrace();
+    		    	}
+    		    	
+    		    }
     }
     
     @FXML
