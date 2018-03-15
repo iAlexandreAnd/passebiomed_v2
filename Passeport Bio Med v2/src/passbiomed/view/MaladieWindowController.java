@@ -11,7 +11,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 
-public class medicWindowController 
+public class MaladieWindowController 
 {
 	  
 	@FXML
@@ -34,14 +34,17 @@ public class medicWindowController
 
     @FXML
     private TableView<?> tableauMaladie;
+    
+    @FXML
+    private JFXButton addToPatient;
 	  
-	final String cssGrid = "-fx-border-color: #A0A0A0;" 
-			   +"-fx-border-width: 0px 4px 4px 4px";
-	   
+//	final String cssGrid = "-fx-border-color: #A0A0A0;" 
+//			   +"-fx-border-width: 0px 4px 4px 4px";
+//	   
 	  @FXML
 	  private void initialize() 
 	  {
-		  borderGrid.setStyle(cssGrid);
+//		  borderGrid.setStyle(cssGrid);
 	  }
 
 }

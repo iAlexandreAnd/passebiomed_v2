@@ -30,20 +30,19 @@ public class MainMenuController
 
     @FXML
     private JFXButton boutonSoon;
- 
     
-    private MainApp mainApp;
-    private Stage stage;
+    @FXML
+    private JFXButton LeaveButton;
     
     public MainMenuController() 
     {
-    	
+    		
     }
     
     @FXML
     private void initialize() 
-    {
-  
+    {	
+    		
     }
     
     @FXML
@@ -55,7 +54,7 @@ public class MainMenuController
     		fxmlLoader.setLocation(getClass().getResource("PatientOverview.fxml"));
 		
     		
-    		Scene scene = new Scene(fxmlLoader.load(),800, 600);
+    		Scene scene = new Scene(fxmlLoader.load());
     		stage.setScene(scene);
     		stage.centerOnScreen();
     		stage.show();
@@ -85,6 +84,14 @@ public class MainMenuController
     		{
 			e.printStackTrace();
     		}
+    }
+    
+    @FXML
+    private void leaveProgram() 
+    {
+    		Stage stage = (Stage) LeaveButton.getScene().getWindow();
+    		stage.close();
+    		System.out.println("The program left properly.");
     }
     
 

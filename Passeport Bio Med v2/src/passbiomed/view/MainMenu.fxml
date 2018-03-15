@@ -90,5 +90,10 @@
             </AnchorPane>
          </children>
       </HBox>
+      <JFXButton fx:id="LeaveButton" buttonType="RAISED" ellipsisString="" layoutX="285.0" layoutY="517.0" onAction="#leaveProgram" prefHeight="38.0" prefWidth="406.0" style="-fx-background-color: #2E457F#2E457F; -fx-background-radius: 40;" text="Quitter" textFill="WHITE" underline="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

@@ -193,7 +193,8 @@ public class PatientOverviewController
     }
     
     
-    private void displayData() {
+    private void displayData() 
+    {
     	medicamentData = FXCollections.observableArrayList();
     	troubleData = FXCollections.observableArrayList();
     	
@@ -275,7 +276,7 @@ public class PatientOverviewController
 			}
 			else
 			{
-				System.out.println("Patient non-trouv�");
+				System.out.println("Patient non-trouvé");
 			}
 			
 			
@@ -328,7 +329,7 @@ public class PatientOverviewController
     		    	try 
     		    	{
     		    		FXMLLoader fxmlLoader = new FXMLLoader();
-    		    		fxmlLoader.setLocation(getClass().getResource("medicWindow.fxml"));
+    		    		fxmlLoader.setLocation(getClass().getResource("MaladieWindow.fxml"));
     		    		
     		    		Scene scene = new Scene(fxmlLoader.load());
     		    		Stage stage = new Stage();
@@ -392,8 +393,28 @@ public class PatientOverviewController
     	}
     	else
     	{
-    		
-    	}
+
+	    	try 
+	    	{
+	    		FXMLLoader fxmlLoader = new FXMLLoader();
+	    		fxmlLoader.setLocation(getClass().getResource("MedicWindow.fxml"));
+	    		
+	    		Scene scene = new Scene(fxmlLoader.load());
+	    		Stage stage = new Stage();
+	    		
+	    		stage.setTitle("Ajout d'un médicament");
+	    		stage.setScene(scene);
+	    		stage.centerOnScreen();
+	    		stage.initModality(Modality.APPLICATION_MODAL);
+	    		stage.show();
+	    		
+	    	}catch (Exception e) 
+	    		{
+				e.printStackTrace();
+	    		}
+	    	
+    		}
+    	
     }
     
     @FXML
