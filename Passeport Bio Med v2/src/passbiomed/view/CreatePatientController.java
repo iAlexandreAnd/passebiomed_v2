@@ -79,7 +79,7 @@ public class CreatePatientController
     private JFXComboBox<String> ComboBoxPays;
 
     @FXML
-    private JFXTextField TextFieldLocalitÃ©;
+    private JFXTextField TextFieldLocalité;
 
     @FXML
     private JFXTextField TextFieldCP;
@@ -130,7 +130,7 @@ public class CreatePatientController
     private JFXTextField PasswordName;
 
     @FXML
-    private JFXButton CrÃ©erUtilisateur;
+    private JFXButton CréerUtilisateur;
     
 
     @FXML
@@ -143,7 +143,7 @@ public class CreatePatientController
     private StackPane contentPane;
     
     @FXML
-    private JFXTextField numÃ©roRegistre;
+    private JFXTextField numéroRegistre;
     
     
     ObservableList<String> listePays = FXCollections.observableArrayList("Belgique", "Angleterre", "Canada", "Japon");
@@ -175,18 +175,18 @@ public class CreatePatientController
     private void buttonActionNext() 
     {
     		String nom = TextFieldNom.getText();
-    		String prÃ©nom = TextFieldPrenom.getText();
+    		String prénom = TextFieldPrenom.getText();
     		String tel = TextFieldTel.getText();
     		String adresse = TextFieldAdresse.getText();
     		String pays = ComboBoxPays.getValue();
-    		String localitÃ© = TextFieldLocalitÃ©.getText();
+    		String localité = TextFieldLocalité.getText();
     		
-    		if(nom.length()== 0||prÃ©nom.length()== 0||tel.length()== 0||adresse.length()== 0||pays==null||localitÃ©.length()== 0) 
+    		if(nom.length()== 0||prénom.length()== 0||tel.length()== 0||adresse.length()== 0||pays==null||localité.length()== 0) 
     		{
     			Alert alerto = new Alert(AlertType.ERROR);
         		alerto.setTitle("Erreur");
         		alerto.setHeaderText("Erreur");
-        		alerto.setContentText("Tous les champs n'ont pas Ã©tÃ© remplis correctement.");
+        		alerto.setContentText("Tous les champs n'ont pas été remplis correctement.");
         		alerto.showAndWait();   			
     		}
     		
@@ -201,11 +201,11 @@ public class CreatePatientController
     		}
     		
     		System.out.println("Nom: "+nom);
-    		System.out.println("PrÃ©nom: "+prÃ©nom);
+    		System.out.println("Prénom: "+prénom);
     		System.out.println("Tel: "+tel);
     		System.out.println("Adresse: "+adresse);
     		System.out.println("Pays: "+pays);
-    		System.out.println("LocalitÃ©: "+localitÃ©);
+    		System.out.println("Localité: "+localité);
     		
     		
     	
@@ -225,7 +225,7 @@ public class CreatePatientController
     @FXML
     private void buttonActionPreviousWin2() 
     {
-    		GridPaneInfo2.setVisible(true);
+    	GridPaneInfo2.setVisible(true);
 		GridPaneInfo3.setVisible(false);
 		NextButtonWin3.setVisible(true);
 		NextButtonWin4.setVisible(false);
@@ -257,7 +257,7 @@ public class CreatePatientController
     		
     		if(RadioButtonFemale.isSelected()) 
     		{
-    			gender = "FÃ©minin";
+    			gender = "Féminin";
     		}
     		else if(RadioButtonMale.isSelected())
     		{
@@ -276,7 +276,7 @@ public class CreatePatientController
     			Alert alertus = new Alert(AlertType.ERROR);
         		alertus.setTitle("Erreur");
         		alertus.setHeaderText("Erreur");
-        		alertus.setContentText("Tous les champs n'ont pas Ã©tÃ© remplis correctement.");
+        		alertus.setContentText("Tous les champs n'ont pas été remplis correctement.");
         		alertus.showAndWait(); 
         		
     		}
@@ -437,7 +437,7 @@ public class CreatePatientController
     			if(resultSet.next())
     			{
     				idLogin = resultSet.getInt("IDLogin");
-    				System.out.println("Id Login rÃ©cupÃ©rÃ©.");	
+    				System.out.println("Id Login récupéré.");	
     			}
     			
     			
@@ -451,7 +451,7 @@ public class CreatePatientController
     
     private int recupIdPassBiomed(String registreNational) 
     {
-    		String sql = "SELECT * FROM Passeport_biomed WHERE NumÃ©roRegistreNational = ? ";
+    		String sql = "SELECT * FROM Passeport_biomed WHERE NuméroRegistreNational = ? ";
     		int idPassBiomed = 0;
     		try 
     		{
@@ -471,7 +471,7 @@ public class CreatePatientController
     			if(resultSet.next())
     			{
     				idPassBiomed = resultSet.getInt("IDPasseport_biomed");
-    				System.out.println("ID passport biomÃ©dical rÃ©cupÃ©rÃ©.");	
+    				System.out.println("ID passport biomédical récupéré.");	
     			}
     			
     			
@@ -486,11 +486,11 @@ public class CreatePatientController
     private void createUser()
     {
     		String nom = TextFieldNom.getText();
-		String prÃ©nom = TextFieldPrenom.getText();
+		String prénom = TextFieldPrenom.getText();
 		String tel = TextFieldTel.getText();
 		String adresse = TextFieldAdresse.getText();
 		String pays = ComboBoxPays.getValue();
-		String localitÃ© = TextFieldLocalitÃ©.getText();
+		String localité = TextFieldLocalité.getText();
 		
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/YYYY");
 		String dateVari = (DatePickerBirthday.getValue().format(formatter));
@@ -503,7 +503,7 @@ public class CreatePatientController
 		
 		if(RadioButtonFemale.isSelected()) 
 		{
-			gender = "FÃ©minin";
+			gender = "Féminin";
 		}
 		else if(RadioButtonMale.isSelected())
 		{
@@ -512,7 +512,7 @@ public class CreatePatientController
     		String adresseMail = mailAddress.getText();
     		String identifiant = logginName.getText();
     		String mdp = PasswordName.getText();
-    		String RN = numÃ©roRegistre.getText();
+    		String RN = numéroRegistre.getText();
     		int flagConnexion = 2;
     		int IDlog = 0;
     		int IdPassbiomed = 0;
@@ -527,13 +527,13 @@ public class CreatePatientController
     			Alert alertas = new Alert(AlertType.ERROR);
         		alertas.setTitle("Erreur");
         		alertas.setHeaderText("Erreur");
-        		alertas.setContentText("Tous les champs n'ont pas Ã©tÃ© remplis correctement.");
+        		alertas.setContentText("Tous les champs n'ont pas été remplis correctement.");
         		alertas.showAndWait(); 
     		}
     		else 
     		{
     			String sqlLogin = "INSERT INTO Login (Login_nom, Login_password) VALUES (?,?)";
-    			String sqlPassport = "INSERT INTO Passeport_biomed (NumÃ©roRegistreNational) VALUES (?)";
+    			String sqlPassport = "INSERT INTO Passeport_biomed (NuméroRegistreNational) VALUES (?)";
     			String sqlPatient = "INSERT INTO Patient (Nom, Prenom, Telephone, Adresse, ICE_nom, ICE_telephone, Groupe_sanguin, Sexe, Date_naissance, Code_postal, Localite, Pays, Flag_connexion, Email, IDPasseport_biomed, IDLogin) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     			try 
     			{
@@ -547,35 +547,35 @@ public class CreatePatientController
     				Connection connect = (Connection) DriverManager.getConnection(url, user, password);
     				PreparedStatement prepStat = (PreparedStatement) connect.prepareStatement(sqlLogin);
     				
-    				// On prÃ©pare le nouveau login Ã  Ãªtre intÃ©grÃ© dans sa table
-    				System.out.println("Login va Ãªtre ajoutÃ©");
+    				// On prépare le nouveau login à être intégré dans sa table
+    				System.out.println("Login va être ajouté");
     				prepStat.setString(1, identifiant);
     				prepStat.setString(2, mdp);
-    				System.out.println("Login ajoutÃ©");
+    				System.out.println("Login ajouté");
     				
-    				// On prÃ©pare le nouveau passeportBiomed Ã  Ãªtre intÃ©grÃ© dans sa table
+    				// On prépare le nouveau passeportBiomed à être intégré dans sa table
     				PreparedStatement prepStat2 = (PreparedStatement) connect.prepareStatement(sqlPassport);
-    				System.out.println("EntitÃ© passaportBioMed va Ãªtre insÃ©rÃ©e.");
+    				System.out.println("Entité passaportBioMed va être insérée.");
     				prepStat2.setString(1, RN);
-    				System.out.println("EntitÃ© crÃ©e.");
+    				System.out.println("Entité crée.");
     				
     				// On execute 
     				prepStat.executeUpdate();
     				prepStat2.executeUpdate();
     				
-    				// On rÃ©cupÃ¨re les ID des tables login et PassBiomed vu que Patient contient des FK.
+    				// On récupère les ID des tables login et PassBiomed vu que Patient contient des FK.
     				IDlog = recupIdLogin(identifiant);
     				IdPassbiomed = recupIdPassBiomed(RN);
     				
-    				// Affichiage de vÃ©rification de la rÃ©cup des ID.
+    				// Affichiage de vérification de la récup des ID.
     				System.out.println(IDlog);
     				System.out.println(IdPassbiomed);
     				
-    				// PrÃ©paration des donnÃ©es.
+    				// Préparation des données.
     				PreparedStatement prepStat3 = (PreparedStatement) connect.prepareStatement(sqlPatient);
     				System.out.println("Nouveau patient en cours de finalisation.");
     				prepStat3.setString(1, nom);
-    				prepStat3.setString(2, prÃ©nom);
+    				prepStat3.setString(2, prénom);
     				prepStat3.setString(3, tel);
     				prepStat3.setString(4, adresse);
     				prepStat3.setString(5, ICE_Nom);
@@ -584,22 +584,22 @@ public class CreatePatientController
     				prepStat3.setString(8, gender);
     				prepStat3.setString(9, dateVari);
     				prepStat3.setString(10, CodePostal);
-    				prepStat3.setString(11, localitÃ©);
+    				prepStat3.setString(11, localité);
     				prepStat3.setString(12, pays);
     				prepStat3.setInt(13, flagConnexion);
     				prepStat3.setString(14, adresseMail);
     				prepStat3.setInt(15, IdPassbiomed);
     				prepStat3.setInt(16, IDlog);
     				
-    				// insertion des donnÃ©es.
+    				// insertion des données.
     				prepStat3.executeUpdate();
-    				System.out.println("Patient crÃ©e.");
+    				System.out.println("Patient crée.");
     				
  
     				Alert alertos = new Alert(AlertType.INFORMATION);
-            		alertos.setTitle("SuccÃ¨s");
-            		alertos.setHeaderText("SuccÃ¨s");
-            		alertos.setContentText("La crÃ©ation s'est dÃ©roulÃ©e correctement.");
+            		alertos.setTitle("Succès");
+            		alertos.setHeaderText("Succès");
+            		alertos.setContentText("La création s'est déroulée correctement.");
             		alertos.showAndWait(); 		
     				
     			}catch (Exception e) 
@@ -607,7 +607,7 @@ public class CreatePatientController
     				Alert alertis = new Alert(AlertType.ERROR);
             		alertis.setTitle("Erreur");
             		alertis.setHeaderText("Erreur");
-            		alertis.setContentText("Une erreur est survenue lors de l'ajout dans la base de donnÃ©es.");
+            		alertis.setContentText("Une erreur est survenue lors de l'ajout dans la base de données.");
             		alertis.showAndWait(); 
     				
             		e.printStackTrace();
@@ -619,4 +619,4 @@ public class CreatePatientController
     	
     }
     
- }
+}

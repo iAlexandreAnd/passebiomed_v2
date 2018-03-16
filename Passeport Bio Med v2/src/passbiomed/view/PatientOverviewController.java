@@ -47,13 +47,10 @@ public class PatientOverviewController
     @FXML
     private TableColumn<Trouble, String> nomCommunColonne;
     @FXML
-    private TableColumn<Trouble, String> statusColonne;
+    private TableColumn<Trouble, String> sousTypeColonne;
     @FXML
-    private TableColumn<Trouble, String> stadeColonne;
-    @FXML
-    private TableColumn<Trouble, String> dateDebutColonne;
-    @FXML
-    private TableColumn<Trouble, String> dateFinColonne;
+    private TableColumn<Trouble, String> masterTypeColonne;
+
     
     @FXML
     private TableView<Medicament> medicamentTable;
@@ -118,6 +115,8 @@ public class PatientOverviewController
     	//Tableview de troubles
     	nomUniverselColonne.setCellValueFactory(new PropertyValueFactory<Trouble, String>("nomUniversel"));
     	nomCommunColonne.setCellValueFactory(new PropertyValueFactory<Trouble, String>("nomCommun"));
+    	sousTypeColonne.setCellValueFactory(new PropertyValueFactory<Trouble, String>("sousType"));
+    	masterTypeColonne.setCellValueFactory(new PropertyValueFactory<Trouble, String>("masterType"));
     }
     
     
@@ -133,7 +132,7 @@ public class PatientOverviewController
     			Class.forName("com.mysql.jdbc.Driver");
     			System.out.println("Driver OK");
     			
-    			String url = "jdbc:mysql://localhost:3306/passbiomed";
+    			String url = "jdbc:mysql://localhost:3306/passbiomed_v2";
     			String user = "root";
     			String password = "Secret123";
     			
@@ -207,18 +206,19 @@ public class PatientOverviewController
     			"inner join repertorier using(IDPasseport_biomed)\n" + 
     			"inner join medicament using(IDMedicament)\n" + 
     			"where IDPasseport_biomed=? ;";
-    	String sql3 = "Select troubles.Nom_commun , troubles.Nom_universel, troubles.Stade, troubles.Date_debut\n" + 
-    			", troubles.Date_fin  from patient\n" + 
-    			"inner join passeport_biomed using(IDPasseport_biomed)\n" + 
-    			"inner join consigner using(IDPasseport_biomed)\n" + 
-    			"inner join troubles using(IDTrouble)\n" + 
-    			"where IDPasseport_biomed= ?;";
+    	String sql3 = "Select troubles.Nom_universel, troubles.Nom_commun, sous_type.Nom, type_trouble.Nom_Type from patient\n" + 
+    			"inner join passeport_biomed using (IDPasseport_biomed)\n" + 
+    			"inner join consigner using (IDPasseport_biomed)\n" + 
+    			"inner join troubles using (IDTrouble)\n" + 
+    			"inner join sous_type using (IDSous_type)\n" + 
+    			"inner join type_trouble using(IDType_trouble)\n" +
+    			"where IDPasseport_biomed = ?;";
     	
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			System.out.println("Driver OK");
 			
-			String url = "jdbc:mysql://localhost:3306/passbiomed";
+			String url = "jdbc:mysql://localhost:3306/passbiomed_v2";
 			String user = "root";
 			String password = "Secret123";
 			
@@ -243,7 +243,6 @@ public class PatientOverviewController
 				sexeLabel.setText(resultSet.getString("Sexe"));
 				iceNomLabel.setText(resultSet.getString("ICE_nom"));
 				iceTelephoneLabel.setText(resultSet.getString("ICE_telephone"));
-				birthdayLabel.setText(resultSet.getString("Date_naissance").toString());
 				
 				preparedStatement =(PreparedStatement) connect.prepareStatement(sql2);
 				preparedStatement.setString(1, loadedPassbiomedID);
@@ -268,7 +267,8 @@ public class PatientOverviewController
 					tempTrouble = new Trouble();
 					tempTrouble.setNomUniversel(resultSet.getString("Nom_universel"));
 					tempTrouble.setNomCommun(resultSet.getString("Nom_commun"));
-					tempTrouble.setStade(resultSet.getString("Stade").toString());
+					tempTrouble.setSousType(resultSet.getString("Nom"));
+					tempTrouble.setMasterType(resultSet.getString("Nom_Type"));
 					
 					troubleData.add(tempTrouble);
 				}

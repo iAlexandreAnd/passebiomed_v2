@@ -137,7 +137,7 @@ public class LoginControler
 			Class.forName("com.mysql.jdbc.Driver");
 			System.out.println("Driver OK");
 			
-			String url = "jdbc:mysql://localhost:3306/passbiomed";
+			String url = "jdbc:mysql://localhost:3306/passbiomed_v2";
 			String user = "root";
 			String password = "Secret123";
 			
